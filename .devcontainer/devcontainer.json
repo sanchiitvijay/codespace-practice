@@ -21,7 +21,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"VisualStudioExptTeam.vscodeintellicode"
+				"VisualStudioExptTeam.vscodeintellicode",
+				"rangav.vscode-thunder-client"
 			]
 		}
 	}
