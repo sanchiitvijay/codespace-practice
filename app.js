@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
+const auth = require("./middleware/auth");
 
 const app = express();
 app.use(express.json());
@@ -57,7 +58,6 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
     try {
-        console.log("hahahahaha----------")
         const { email, password } = req.body;
         if (!(email && password)) {
             return res.status(400).send("All fields are required");
@@ -101,5 +101,10 @@ app.post("/login", async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+app.get("/dashboard", auth, async(req, res, next) => {
+    
+    res.send("<h2>Welcome to the dashboard</h2>")
+})
 
 module.exports = app;
